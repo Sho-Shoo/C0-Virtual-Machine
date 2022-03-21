@@ -1,0 +1,164 @@
+C0 C0 FF EE       # magic number
+00 17             # version 11, arch = 1 (64 bits)
+
+00 00             # int pool count
+# int pool
+
+00 F9             # string pool total size
+# string pool
+54 68 65 20 63 68 61 72 61 63 74 65 72 20 69 73 20 00  # "The character is "
+00  # ""
+52 65 63 69 74 61 74 69 6F 6E 20 73 65 63 74 69 6F 6E 20 51 20 69 73 20 68 65 72 65 00  # "Recitation section Q is here"
+58 2D 63 6F 6F 72 20 69 73 20 00  # "X-coor is "
+2C 20 59 2D 63 6F 6F 72 20 69 73 20 00  # ", Y-coor is "
+0A 00  # "\n"
+50 6F 69 6E 74 20 6E 6F 74 65 20 69 73 20 00  # "Point note is "
+0A 00  # "\n"
+74 65 73 74 73 2F 6D 65 6D 6F 5F 74 65 73 74 2E 63 30 3A 20 32 39 2E 35 2D 32 39 2E 32 36 3A 20 61 73 73 65 72 74 20 66 61 69 6C 65 64 00  # "tests/memo_test.c0: 29.5-29.26: assert failed"
+74 65 73 74 73 2F 6D 65 6D 6F 5F 74 65 73 74 2E 63 30 3A 20 33 30 2E 35 2D 33 30 2E 32 35 3A 20 61 73 73 65 72 74 20 66 61 69 6C 65 64 00  # "tests/memo_test.c0: 30.5-30.25: assert failed"
+74 65 73 74 73 2F 6D 65 6D 6F 5F 74 65 73 74 2E 63 30 3A 20 33 31 2E 35 2D 33 31 2E 32 35 3A 20 61 73 73 65 72 74 20 66 61 69 6C 65 64 00  # "tests/memo_test.c0: 31.5-31.25: assert failed"
+41 6C 6C 20 74 65 73 74 73 20 70 61 73 73 65 64 21 21 21 00  # "All tests passed!!!"
+
+00 01             # function count
+# function_pool
+
+#<main>
+00                # number of arguments = 0
+04                # number of local variables = 4
+00 EB             # code length = 235 bytes
+BB 08    # new 8              # alloc(char*)
+36 00    # vstore 0           # cptrptr = alloc(char*);
+BB 01    # new 1              # alloc(char)
+36 01    # vstore 1           # cptr = alloc(char);
+15 01    # vload 1            # cptr
+10 41    # bipush 65          # 'A'
+55       # cmstore            # *(cptr) = 'A';
+15 00    # vload 0            # cptrptr
+15 01    # vload 1            # cptr
+4F       # amstore            # *(cptrptr) = cptr;
+14 00 00 # aldc 0             # s[0] = "The character is "
+B7 00 00 # invokenative 0     # print("The character is ")
+57       # pop                # (ignore result)
+15 00    # vload 0            # cptrptr
+2F       # amload             # *(cptrptr)
+34       # cmload             # *(*(cptrptr))
+B7 00 01 # invokenative 1     # printchar(*(*(cptrptr)))
+57       # pop                # (ignore result)
+14 00 12 # aldc 18            # s[18] = ""
+B7 00 00 # invokenative 0     # print("")
+57       # pop                # (ignore result)
+BB 10    # new 16             # alloc(coordinate)
+36 02    # vstore 2           # point = alloc(coordinate);
+15 02    # vload 2            # point
+62 00    # aaddf 0            # &point->x
+10 0F    # bipush 15          # 15
+4E       # imstore            # point->x = 15;
+15 02    # vload 2            # point
+62 04    # aaddf 4            # &point->y
+10 7A    # bipush 122         # 122
+4E       # imstore            # point->y = 122;
+15 02    # vload 2            # point
+62 08    # aaddf 8            # &point->note
+14 00 13 # aldc 19            # s[19] = "Recitation section Q is here"
+4F       # amstore            # point->note = "Recitation section Q is here";
+14 00 30 # aldc 48            # s[48] = "X-coor is "
+B7 00 00 # invokenative 0     # print("X-coor is ")
+57       # pop                # (ignore result)
+15 02    # vload 2            # point
+62 00    # aaddf 0            # &point->x
+2E       # imload             # point->x
+B7 00 02 # invokenative 2     # printint(point->x)
+57       # pop                # (ignore result)
+14 00 3B # aldc 59            # s[59] = ", Y-coor is "
+B7 00 00 # invokenative 0     # print(", Y-coor is ")
+57       # pop                # (ignore result)
+15 02    # vload 2            # point
+62 04    # aaddf 4            # &point->y
+2E       # imload             # point->y
+B7 00 02 # invokenative 2     # printint(point->y)
+57       # pop                # (ignore result)
+14 00 48 # aldc 72            # s[72] = "\n"
+B7 00 00 # invokenative 0     # print("\n")
+57       # pop                # (ignore result)
+14 00 4A # aldc 74            # s[74] = "Point note is "
+B7 00 00 # invokenative 0     # print("Point note is ")
+57       # pop                # (ignore result)
+15 02    # vload 2            # point
+62 08    # aaddf 8            # &point->note
+2F       # amload             # point->note
+B7 00 00 # invokenative 0     # print(point->note)
+57       # pop                # (ignore result)
+14 00 59 # aldc 89            # s[89] = "\n"
+B7 00 00 # invokenative 0     # print("\n")
+57       # pop                # (ignore result)
+10 03    # bipush 3           # 3
+BC 04    # newarray 4         # alloc_array(int, 3)
+36 03    # vstore 3           # arr = alloc_array(int, 3);
+15 03    # vload 3            # arr
+10 00    # bipush 0           # 0
+63       # aadds              # &arr[0]
+10 FF    # bipush -1          # -1
+4E       # imstore            # arr[0] = -(1);
+15 03    # vload 3            # arr
+10 02    # bipush 2           # 2
+63       # aadds              # &arr[2]
+10 01    # bipush 1           # 1
+4E       # imstore            # arr[2] = 1;
+15 03    # vload 3            # arr
+10 00    # bipush 0           # 0
+63       # aadds              # &arr[0]
+2E       # imload             # arr[0]
+10 FF    # bipush -1          # -1
+9F 00 06 # if_cmpeq +6        # if (arr[0] == -(1)) goto <00:cond_true>
+A7 00 08 # goto +8            # goto <01:cond_false>
+# <00:cond_true>
+10 01    # bipush 1           # true
+A7 00 05 # goto +5            # goto <02:cond_end>
+# <01:cond_false>
+10 00    # bipush 0           # false
+# <02:cond_end>
+14 00 5B # aldc 91            # s[91] = "tests/memo_test.c0: 29.5-29.26: assert failed"
+CF       # assert             # assert (arr[0] == -(1)) [failure message on stack]
+15 03    # vload 3            # arr
+10 01    # bipush 1           # 1
+63       # aadds              # &arr[1]
+2E       # imload             # arr[1]
+10 00    # bipush 0           # 0
+9F 00 06 # if_cmpeq +6        # if (arr[1] == 0) goto <03:cond_true>
+A7 00 08 # goto +8            # goto <04:cond_false>
+# <03:cond_true>
+10 01    # bipush 1           # true
+A7 00 05 # goto +5            # goto <05:cond_end>
+# <04:cond_false>
+10 00    # bipush 0           # false
+# <05:cond_end>
+14 00 89 # aldc 137           # s[137] = "tests/memo_test.c0: 30.5-30.25: assert failed"
+CF       # assert             # assert (arr[1] == 0) [failure message on stack]
+15 03    # vload 3            # arr
+10 02    # bipush 2           # 2
+63       # aadds              # &arr[2]
+2E       # imload             # arr[2]
+10 01    # bipush 1           # 1
+9F 00 06 # if_cmpeq +6        # if (arr[2] == 1) goto <06:cond_true>
+A7 00 08 # goto +8            # goto <07:cond_false>
+# <06:cond_true>
+10 01    # bipush 1           # true
+A7 00 05 # goto +5            # goto <08:cond_end>
+# <07:cond_false>
+10 00    # bipush 0           # false
+# <08:cond_end>
+14 00 B7 # aldc 183           # s[183] = "tests/memo_test.c0: 31.5-31.25: assert failed"
+CF       # assert             # assert (arr[2] == 1) [failure message on stack]
+14 00 E5 # aldc 229           # s[229] = "All tests passed!!!"
+B7 00 03 # invokenative 3     # println("All tests passed!!!")
+57       # pop                # (ignore result)
+10 2A    # bipush 42          # 42
+B0       # return             # 
+
+00 04             # native count
+# native pool
+00 01 00 06       # print
+00 01 00 08       # printchar
+00 01 00 09       # printint
+00 01 00 0A       # println
+

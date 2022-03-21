@@ -1,0 +1,14 @@
+/**************************************************************************/
+/*              COPYRIGHT Carnegie Mellon University 2021                 */
+/* Do not post this file or any derivative on a public site or repository */
+/**************************************************************************/
+int main () {
+  int n = 15122;
+  int i = 0; int k = 0;
+  while (k <= n) {
+    k += 2*i + 1;
+    i++;
+  }
+  return i-1;
+}
+

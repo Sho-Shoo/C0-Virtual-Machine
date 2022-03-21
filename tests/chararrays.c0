@@ -1,0 +1,13 @@
+/**************************************************************************/
+/*              COPYRIGHT Carnegie Mellon University 2021                 */
+/* Do not post this file or any derivative on a public site or repository */
+/**************************************************************************/
+#use <conio>
+
+int main() {
+    char[] A = alloc_array(char, 5);
+    A[3] = '@';
+    printchar(A[3]);
+    println("");
+    return 0;
+}

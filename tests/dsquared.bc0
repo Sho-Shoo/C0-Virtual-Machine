@@ -1,0 +1,78 @@
+C0 C0 FF EE       # magic number
+00 17             # version 11, arch = 1 (64 bits)
+
+00 00             # int pool count
+# int pool
+
+00 00             # string pool total size
+# string pool
+
+00 02             # function count
+# function_pool
+
+#<main>
+00                # number of arguments = 0
+09                # number of local variables = 9
+00 57             # code length = 87 bytes
+10 0F    # bipush 15          # 15
+36 00    # vstore 0           # a1 = 15;
+10 7A    # bipush 122         # 122
+36 01    # vstore 1           # b1 = 122;
+10 2A    # bipush 42          # 42
+36 02    # vstore 2           # a2 = 42;
+10 00    # bipush 0           # 0
+36 03    # vstore 3           # b2 = 0;
+10 F9    # bipush -7          # -7
+36 04    # vstore 4           # a3 = -(7);
+10 F5    # bipush -11         # -11
+36 05    # vstore 5           # b3 = -(11);
+10 FC    # bipush -4          # -4
+36 06    # vstore 6           # a4 = -(4);
+10 03    # bipush 3           # 3
+36 07    # vstore 7           # b4 = 3;
+10 00    # bipush 0           # 0
+36 08    # vstore 8           # sum = 0;
+15 08    # vload 8            # sum
+15 00    # vload 0            # a1
+15 01    # vload 1            # b1
+B8 00 01 # invokestatic 1     # dsquared(a1, b1)
+60       # iadd               # (sum + dsquared(a1, b1))
+36 08    # vstore 8           # sum = (sum + dsquared(a1, b1));
+15 08    # vload 8            # sum
+15 02    # vload 2            # a2
+15 03    # vload 3            # b2
+B8 00 01 # invokestatic 1     # dsquared(a2, b2)
+60       # iadd               # (sum + dsquared(a2, b2))
+36 08    # vstore 8           # sum = (sum + dsquared(a2, b2));
+15 08    # vload 8            # sum
+15 04    # vload 4            # a3
+15 05    # vload 5            # b3
+B8 00 01 # invokestatic 1     # dsquared(a3, b3)
+60       # iadd               # (sum + dsquared(a3, b3))
+36 08    # vstore 8           # sum = (sum + dsquared(a3, b3));
+15 08    # vload 8            # sum
+15 06    # vload 6            # a4
+15 07    # vload 7            # b4
+B8 00 01 # invokestatic 1     # dsquared(a4, b4)
+60       # iadd               # (sum + dsquared(a4, b4))
+36 08    # vstore 8           # sum = (sum + dsquared(a4, b4));
+15 08    # vload 8            # sum
+B0       # return             # 
+
+
+#<dsquared>
+02                # number of arguments = 2
+02                # number of local variables = 2
+00 0C             # code length = 12 bytes
+15 00    # vload 0            # x
+15 00    # vload 0            # x
+68       # imul               # (x * x)
+15 01    # vload 1            # y
+15 01    # vload 1            # y
+68       # imul               # (y * y)
+60       # iadd               # ((x * x) + (y * y))
+B0       # return             # 
+
+00 00             # native count
+# native pool
+

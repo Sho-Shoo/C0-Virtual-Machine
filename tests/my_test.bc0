@@ -1,0 +1,37 @@
+C0 C0 FF EE       # magic number
+00 17             # version 11, arch = 1 (64 bits)
+
+00 00             # int pool count
+# int pool
+
+00 06             # string pool total size
+# string pool
+31 35 31 32 32 00  # "15122"
+
+00 02             # function count
+# function_pool
+
+#<main>
+00                # number of arguments = 0
+01                # number of local variables = 1
+00 0E             # code length = 14 bytes
+B8 00 01 # invokestatic 1     # get_string()
+36 00    # vstore 0           # s = get_string();
+15 00    # vload 0            # s
+B7 00 00 # invokenative 0     # println(s)
+57       # pop                # (ignore result)
+10 2A    # bipush 42          # 42
+B0       # return             # 
+
+
+#<get_string>
+00                # number of arguments = 0
+00                # number of local variables = 0
+00 04             # code length = 4 bytes
+14 00 00 # aldc 0             # s[0] = "15122"
+B0       # return             # 
+
+00 01             # native count
+# native pool
+00 01 00 0A       # println
+

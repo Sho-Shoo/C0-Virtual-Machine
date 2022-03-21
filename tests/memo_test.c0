@@ -1,0 +1,40 @@
+#use <conio> 
+
+typedef struct coordinate_header coordinate; 
+struct coordinate_header {
+    int x; 
+    int y; 
+    string note; 
+}; 
+
+int main()
+{
+    char** cptrptr = alloc(char*); 
+    char* cptr = alloc(char); 
+    *cptr = 'A'; 
+    *cptrptr = cptr; 
+
+    printf("The character is %c", **cptrptr);
+
+    coordinate* point = alloc(coordinate); 
+    point->x = 15; 
+    point->y = 122; 
+    point->note = "Recitation section Q is here"; 
+    printf("X-coor is %d, Y-coor is %d\n", point->x, point->y);
+    printf("Point note is %s\n", point->note); 
+
+    int[] arr = alloc_array(int, 3); 
+    arr[0] = -1; 
+    arr[2] = 1; 
+    assert(arr[0] == -1);
+    assert(arr[1] == 0); 
+    assert(arr[2] == 1); 
+    //@assert(\length(arr) == 3);
+    
+    // Should signal error here !!!
+    // arr[3] = 0; 
+
+    println("All tests passed!!!");
+
+    return 42; 
+}

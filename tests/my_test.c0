@@ -1,0 +1,21 @@
+#use <conio>
+
+typedef struct coordinate_header coordinate; 
+struct coordinate_header {
+    int x; 
+    int y; 
+}; 
+
+string get_string()
+{
+    return "15122"; 
+}
+
+int main()
+{   
+    string s = get_string(); 
+    println(s);
+
+    return 42; 
+
+}

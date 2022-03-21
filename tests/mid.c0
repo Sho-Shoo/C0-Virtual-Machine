@@ -1,0 +1,14 @@
+/**************************************************************************/
+/*              COPYRIGHT Carnegie Mellon University 2021                 */
+/* Do not post this file or any derivative on a public site or repository */
+/**************************************************************************/
+int main()
+{
+	int low = 0x15;
+	int high = 0x122;
+	int mid;
+
+	mid = low + (high - low)/2;
+	return mid;
+}
+
